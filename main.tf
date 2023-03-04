@@ -8,10 +8,19 @@ terraform {
   }
 
   required_version = ">= 1.1.0"
+
+  cloud {
+    organization = "songhan"
+
+    workspaces {
+      name = "gh-actions-learn"
+    }
+  }
 }
 
 provider "azurerm" {
   features {}
+  use_oidc = true
 }
 
 resource "azurerm_resource_group" "rg" {
